@@ -1,6 +1,65 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
 {% extends "layout.html" %}
+</head>
+<body>
 {% block content %}
-<div class='container-fluid'>
-    <p>OUI</p>
+    <div class="container">
+  <div class="row">
+    <div class="col">
+      <h3>Recette aléatoire</h3>
+      <p>Description</p>
+      <form action="/random" method="POST">
+     <input class="btn btn-primary" type="submit" value="Aléatoire">
+      </form>
+    </div>
+    <div class="col">
+      <h3>Chercher une recette</h3>
+      <p>Description</p>
+    <form action="/name" method="POST">
+        <div class="form-group">
+         <input type="text" class="form-control" name="name" id="name" placeholder="Nom de la recette">
+        </div>
+        <input minlength="1" class="btn btn-primary" type="submit" value="Rechercher">
+    </form>
+    </div>
+  </div>
 </div>
+<div class="loader">
+</div>
+<style>
+    .loader {
+      border: 16px solid #f3f3f3;
+      border-radius: 50%;
+      border-top: 16px solid #3498db;
+      width: 120px;
+      height: 120px;
+      -webkit-animation: spin 2s linear infinite; /* Safari */
+      animation: spin 2s linear infinite;
+      margin: 0 auto;
+    }
+    
+    /* Safari */
+    @-webkit-keyframes spin {
+      0% { -webkit-transform: rotate(0deg); }
+      100% { -webkit-transform: rotate(360deg); }
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    </style>
+    <script>
+        $( ".loader" ).hide()
+        $( ".btn" ).click(function() {
+          $( ".loader" ).show()
+        });
+    </script>
 {% endblock %}
+</body>
+</html>
