@@ -25,19 +25,29 @@ def not_found(error):
 
 @app.route("/name", methods=['POST'])
 def name():
-    print("http://127.0.0.1:5000/api/v1/search/" + request.form['name'])
-    r = requests.get("http://127.0.0.1:5000/api/v1/search/" + request.form['name'])
-    result = r.json()
-    if (result['error'] == True):
-        return "Erreur"
-    return render_template("result.html", result=result)
+    try:
+        r = requests.get("http://127.0.0.1:5000/api/v1/search/" + request.form['name'])
+        if (r.status_code == 200):
+            result = r.json()
+            if (result['error'] == True):
+                return render_template("home.html", error="Aucun résultat n'a été trouvée, veuillez essayer avec des mots clés en anglais")
+            return render_template("result.html", result=result)
+        else:
+            return render_template("home.html", error="L'API a rencontrée une erreur")
+    except:
+        return render_template("home.html", error="L'API n'est pas disponible")
 
 @app.route("/random", methods=['POST'])
 def random():
-    r = requests.get("http://127.0.0.1:5000/api/v1/random")
-    result = r.json()
-    return render_template("result.html", result=result)
-
+    try:
+        r = requests.get("http://127.0.0.1:5000/api/v1/random")
+        if (r.status_code == 200):
+            result = r.json()
+            return render_template("result.html", result=result)
+        else:
+            return render_template("home.html", error="L'API a rencontrée une erreur")
+    except:
+        return render_template("home.html", error="L'API n'est pas disponible")
 # Home page view
 @app.route('/',  methods=['GET', 'POST'])
 def home():

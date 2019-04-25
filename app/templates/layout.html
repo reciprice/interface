@@ -6,14 +6,20 @@
 <meta name="author" content="Benjamin DUBUS">
 <title>Interface de test</title>
 <!-- Bring in Bootstrap CSS and theme CSS -->
+<link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon">
+<link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon">
 <script src="{{ url_for('static', filename='js/jquery-1.11.0.js') }}"></script>
 <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
 <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+
 <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-theme.min.css') }}" rel="stylesheet">
 <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-theme.min.css') }}" rel="stylesheet">
 </head>
 <body>
+  <div class="page-container">
+
     <div class="jumbotron text-center">
         <h1>Reciprice</h1>
         <p>Interface de test de l'API</p> 
@@ -25,6 +31,8 @@
 <script src="{{ url_for('static', filename='js/jquery-1.11.0.js') }}"></script>
 <!-- Bootstrap Core JavaScript -->
 <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+
+
 </body>
 </html>
 
