@@ -1,0 +1,46 @@
+{% extends "layout.html" %} {% block content %}
+
+<div class="container">
+    <h1>Nom de la recette : {{ result["name"] }}</h1>
+    <p><b>Instructions de la recette : </b>{{ result["instructions"] }}</p>
+    <p>
+        <b>Prix de la recette :</b> {{ result["price"] }} $
+    </p>
+    <img src="{{ result['img'] }}" alt="Smiley face" height="300" width="300" />
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Ingredient</th>
+                <th scope="col">Quantités</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ingredient in result['ingredients'] %}
+            <tr>
+                <td>{{ingredient["ingredient"]}}</td>
+                <td>{{ingredient["mesures"]}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </tbody>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Nom de l'article</a></th>
+                <th scope="col">Prix de l'article</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for elem in result['cart']['wallmart'] %}
+            <tr>
+                <td><a href="{{elem['url']}}">{{elem['name']}}</a></td>
+                <td>{{elem['price']}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </tbody>
+    <iframe src="{{ result['video'] }}" width="550" height="250" frameborder="0" allowfullscreen></iframe>
+</div>
+{% endblock %}
